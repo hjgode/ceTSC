@@ -1,0 +1,229 @@
+//
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+//
+// Use of this source code is subject to the terms of the Microsoft end-user
+// license agreement (EULA) under which you licensed this SOFTWARE PRODUCT.
+// If you did not accept the terms of the EULA, you are not authorized to use
+// this source code. For a copy of the EULA, please see the LICENSE.RTF on your
+// install media.
+//
+#include <windows.h>
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\WTSConnectionWizard.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DESCRIPTION_DIALOG DIALOG DISCARDABLE  0, 0, 272, 161
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "WTS Connection Wizard"
+BEGIN
+    LTEXT           "N&ame:",IDC_STATIC,100,17,23,8
+    EDITTEXT        IDC_CONNECTION_DESCRIPTION,107,29,139,12,ES_AUTOHSCROLL
+    LTEXT           "&Server:",IDC_STATIC,100,65,26,8
+    EDITTEXT        IDC_SERVER,107,77,139,12,ES_AUTOHSCROLL
+#ifdef WBT_USELOWSPEED
+    CONTROL         "&Low Speed Connection",IDC_LOW_SPEED_CONNECTION,"Button",
+                    BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,107,117,90,10
+    LTEXT           "Tab Low Speed Connection if you are connecting across a slower network.",
+                    IDC_STATIC,100,96,154,16
+#endif
+    LTEXT           "Type a name for the new connection.",IDC_STATIC,100,7,
+                    150,8
+    LTEXT           "Type the name of the computer to which you want to connect.",
+                    IDC_STATIC,100,46,149,18
+    CONTROL         129,IDC_STATIC,"Static",SS_BITMAP,8,7,53,87
+END
+
+IDD_LOGON_DIALOG DIALOG DISCARDABLE  0, 0, 262, 166
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "WTS Connection Wizard"
+BEGIN
+    CONTROL         "&Automatic Logon",IDC_AUTO_LOGON_CHECK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,95,52,68,10
+    LTEXT           "&Username:",IDC_USERNAME_LBL,96,68,37,8
+    EDITTEXT        IDC_USERNAME,138,66,102,12,ES_AUTOHSCROLL
+    LTEXT           "&Password:",IDC_PASSWORD_LBL,96,86,35,8
+    EDITTEXT        IDC_PASSWORD,138,84,102,12,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "&Domain:",IDC_DOMAIN_LBL,96,104,28,8
+    EDITTEXT        IDC_DOMAIN,138,102,102,12,ES_AUTOHSCROLL
+    GROUPBOX        " ",IDC_STATIC,89,52,158,70
+    LTEXT           "If you want to automatically log onto the server, Tab Automatic Logon and enter your user name, password and domain. Otherwise, you will be prompted for this information each time you choose the connection.",
+                    IDC_STATIC,89,7,154,43
+    CONTROL         129,IDC_STATIC,"Static",SS_BITMAP,8,7,53,87
+END
+
+IDD_FINISH_DIALOG DIALOG DISCARDABLE  0, 0, 262, 160
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "WTS Connection Wizard"
+BEGIN
+    LTEXT           "You have successfully created a new connection called:",
+                    IDC_STATIC,97,7,145,17
+    LTEXT           "",IDC_FINISH_CONNECTION_NAME,97,42,146,16
+    LTEXT           "Tab Finish to save your new connection.",IDC_STATIC,
+                    97,98,136,10
+    CONTROL         129,IDC_STATIC,"Static",SS_BITMAP,8,7,53,87
+END
+
+IDD_APPLICATION_DIALOG DIALOG DISCARDABLE  0, 0, 252, 157
+STYLE WS_CHILD | WS_CAPTION
+CAPTION "WTS Connection Wizard"
+BEGIN
+    CONTROL         "&Desktop",IDC_DESKTOP_BUTTON,"Button",
+                    BS_AUTORADIOBUTTON,90,46,43,10
+    CONTROL         "&Application file name:",
+                    IDC_APPLICATION_FILE_NAME_BUTTON,"Button",
+                    BS_AUTORADIOBUTTON,90,56,83,10
+    EDITTEXT        IDC_APPLICATION_FILE_NAME_EDIT,104,69,137,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "&Working directory:",IDC_WORKING_DIRECTORY_LBL,90,103,73,8
+    EDITTEXT        IDC_WORKING_DIRECTORY_EDIT,104,114,137,12,ES_AUTOHSCROLL
+    LTEXT           "On connection, the Windows NT desktop is displayed by default.",
+                    IDC_STATIC,90,7,153,18
+    LTEXT           "To start an application when you connect, select Application file name and type its name.",
+                    IDC_STATIC,89,25,155,16
+    LTEXT           "When you specify an application, you can also specify a working directory.",
+                    IDC_STATIC,90,85,154,17
+    CONTROL         129,IDC_STATIC,"Static",SS_BITMAP,8,7,53,87
+END
+
+IDD_INVALID_CONNECTION_NAME_DIALOG DIALOG DISCARDABLE  0, 0, 215, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "No Value Provided"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,82,39,50,14
+    LTEXT           "You must provide a valid connection description.",
+                    IDC_STATIC,39,18,167,8
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,4,7,31,31
+END
+
+IDD_INVALID_SERVER_DIALOG DIALOG DISCARDABLE  0, 0, 183, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "No Value Provided"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,66,39,50,14
+    LTEXT           "You must provide a valid server name.",IDC_STATIC,38,18,
+                    139,8
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,3,7,31,31
+END
+
+IDD_CONNECTION_NAME_TOO_LONG_DIALOG DIALOG DISCARDABLE  0, 0, 251, 54
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Connection Name Length Exceeds Limit"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,100,33,50,14
+    LTEXT           "Connection names may not exceed 32 characters in length.",
+                    IDC_STATIC,39,15,204,10
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,7,7,24,25
+END
+
+IDD_SERVER_NAME_TOO_LONG_DIALOG DIALOG DISCARDABLE  0, 0, 239, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Server Name Length Exceeds Limit"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,94,34,50,14
+    LTEXT           "Server names may not exceed 32 characters in length.",
+                    IDC_STATIC,39,15,193,10
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,7,7,24,25
+END
+
+IDD_APPLICATION_NAME_TOO_LONG DIALOG DISCARDABLE  0, 0, 227, 56
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Application Name Length Exceeds Limit"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,84,35,50,14
+    LTEXT           "Application names may not exceed 256 characters in length.",
+                    IDC_STATIC,37,14,180,17
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,7,7,24,25
+END
+
+IDD_CONNECTION_EXISTS_DIALOG DIALOG DISCARDABLE  0, 0, 178, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Connection Already Exists"
+BEGIN
+    CTEXT           "A connection with this name already exists. Please choose a different name.",
+                    IDC_STATIC,41,12,127,28
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,7,7,27,25
+    DEFPUSHBUTTON   "&OK",IDOK,67,45,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_WIZ_BMP             BITMAP  DISCARDABLE     "..\\wbtcmnres\\bitmap1.bmp"
+IDB_ICONSTOP            BITMAP  DISCARDABLE     "res\\stop.bmp"
+IDB_ICONINFORMATION     BITMAP  DISCARDABLE     "..\\wbtcmnres\\information.bmp"
+IDB_ICONQUESTION        BITMAP  DISCARDABLE     "..\\wbtcmnres\\question.bmp"
+IDB_ICONEXCLAMATION     BITMAP  DISCARDABLE     "res\\exclamation.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FAIL_CREATE_CONNECTION_KEY 
+                            "Failed to create the connection key. Last error"
+    IDS_REG_QUERY_FAILED    "Registry Query Failed"
+    IDS_MRU0_FAILED         "Failed to set the MRU0 value. Last error"
+    IDS_FULL_ADDRESS_FAILED "Failed to set the Full Address value. Last error"
+    IDS_AUTO_CONNECT_FAILED "Failed to set the Auto Connect value. Last error"
+    IDS_AUTO_LOGON_FAILED   "Failed to set the AutoLogon value. Last error "
+    IDS_USERNAME_FAILED     "Failed to set the UserName value. Last error"
+    IDS_DOMAIN_FAILED       "Failed to set the Domain value. Last error"
+    IDS_PASSWORD_FAILED     "Failed to set the Password value. Last error"
+    IDS_SCREEN_MODE_ID_FAILED 
+                            "Failed to set the Screen Mode ID value. Last error"
+    IDS_COMPRESSION_FAILED  "Failed to set the Compression value. Last error"
+    IDS_ALTERNATE_SHELL_FAILED 
+                            "Failed to set the Alternate Shell value. Last error"
+    IDS_DESKTOP_FAILED      "Failed to set the Desktop value. Last error"
+    IDS_SHELL_WORKING_DIRECTORY_FAILED 
+                            "Failed to set the Shell Working Directory value. Last error"
+    IDS_INVALID_DESCRIPTION_NAME_TITLE "Invalid Connection Name"
+    IDS_INVALID_DESCRIPTION_NAME_MESSAGE 
+                            "The connection name may not contain any of the following characters:"
+    IDS_INVALID_SERVER_NAME_TITLE "Invalid Server Name"
+    IDS_INVALID_SERVER_NAME_MESSAGE 
+                            "The server name may not contain any of the following characters:"
+    IDS_NO_SPACE_IN_DESCRIPTION_MESSAGE 
+                            "The first character in the connection name may not be a space."
+    IDS_INVALID_USERNAME_TITLE "Invalid Username"
+    IDS_INVALID_USERNAME_MESSAGE_1 
+                            "The username may not exceed 32 characters."
+    IDS_INVALID_USERNAME_MESSAGE_2 
+                            "The username may not contain any of the following characters:"
+    IDS_INVALID_APP_NAME_TITLE "Invalid Application Name"
+    IDS_INVALID_APP_NAME_MESSAGE "You must provide an application name."
+    IDS_CLIENTEXE_FAILED    "Failed to set the ClientExe value. Last error"
+    IDS_REG_SET_FAILED      "Failed To Write To Registry"
+    IDS_REG_SET_FAILED_MESSAGE 
+                            "WTS Connection Wizard failed to set all required values to the registry. Please contact your administrator. Last error = %d."
+    IDS_CONNECTION_EXISTS_TITLE "Connection Already Exists"
+    IDS_CONNECTION_EXISTS_MESSAGE 
+                            "A connection with this name already exists. Please choose a different name."
+    IDS_INVALID_DOMAIN_NAME_TITLE "Invalid Domain Name"
+    IDS_INVALID_DOMAIN_NAME_MESSAGE 
+                            "The domain name may not contain any of the following characters:"
+    IDS_IPBAD_FIELD_CAPTION "Invalid Entry"
+    IDS_IPBAD_FIELD_VALUE   "%1!s! is not a valid entry.\n\nSpecify a value between %2!d! and %3!d!."
+    IDS_INVALID_FILE_NAME_TITLE "Invalid Working Directory"
+    IDS_INVALID_FILE_NAME_MESSAGE 
+                            "The path name may not contain any of the following characters:"
+    IDS_CONWIZ_TITLE "WTS Connection Wizard"
+END

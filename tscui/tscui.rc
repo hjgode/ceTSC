@@ -1,0 +1,226 @@
+//
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+//
+// Use of this source code is subject to the terms of the Microsoft end-user
+// license agreement (EULA) under which you licensed this SOFTWARE PRODUCT.
+// If you did not accept the terms of the EULA, you are not authorized to use
+// this source code. For a copy of the EULA, please see the LICENSE.RTF on your
+// install media.
+//
+#include <windows.h>
+#include <commctrl.h>
+#include "tscui.h"
+
+
+IDI_ICO_COOLPC			ICON    DISCARDABLE     "computer.ico"
+IDI_ICO_FOLDER			ICON    DISCARDABLE     "folder.ico"
+IDI_ICO_SOUND			ICON    DISCARDABLE     "sound.ico"
+IDI_ICO_KEYBOARD		ICON    DISCARDABLE     "keybd.ico"
+IDI_ICO_PORT			ICON    DISCARDABLE     "ports.ico"
+IDI_ICO_INFO			ICON    DISCARDABLE     "info.ico"
+IDI_ICO_MONITOR			ICON	DISCARDABLE	"monitor.ico"
+
+IDB_COLOR16            BITMAP  DISCARDABLE		"color16.bmp"
+IDB_COLOR8             BITMAP  DISCARDABLE		"color8.bmp"
+
+
+IDD_TS_LOGON DIALOG DISCARDABLE  0, 0, 270, 61
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CONTEXTHELP
+CAPTION "Remote Desktop Connection"
+
+BEGIN
+    LTEXT           "&Computer:",IDC_STC_COMPUTER_NAME,7,15,44,8
+    COMBOBOX        IDC_CBO_SERVERS,55,12,154,42,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "Co&nnect",IDOK,108,39,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,161,39,50,14
+    PUSHBUTTON      "&Options >>",IDC_BTN_OPTIONS,215,39,50,14
+    CONTROL         "Tab1",IDC_TAB_MAIN,"SysTabControl32",WS_TABSTOP,4,0,261,198
+END
+
+IDD_PROPPAGE_GENERAL DIALOG DISCARDABLE  0, 0, 253, 178
+STYLE DS_CONTROL | WS_CHILD
+
+BEGIN
+    LTEXT           "Type the name of the computer, or choose a computer from the drop-down list.",IDC_STATIC,43,12,190,19
+    LTEXT           "&Computer:",IDC_STATIC,45,36,36,8
+    COMBOBOX        IDC_CBO_GENERAL_SERVERS,90,34,132,55,CBS_DROPDOWN | CBS_AUTOHSCROLL |
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&User name:",IDC_STATIC,45,58,38,8
+    EDITTEXT        IDC_EDT_GENERAL_USERNAME,90,56,132,14,ES_AUTOHSCROLL
+    LTEXT           "&Password:",IDC_STC_PASSWORD,45,77,38,8
+    EDITTEXT        IDC_EDT_GENERAL_PASSWORD,90,75,132,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    LTEXT           "&Domain:",IDC_STATIC,45,96,40,8
+    EDITTEXT        IDC_EDT_GENERAL_DOMAIN,90,94,132,14,ES_AUTOHSCROLL
+#ifdef DEBUG
+    CONTROL         "S&ave my password",IDC_CHK_SAVE_PASSWORD,
+                    "Button",BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,90,
+                    111,154,13
+#endif
+    LTEXT           "Save current settings, or open saved connection.",
+                    IDC_STATIC,43,142,196,10
+    PUSHBUTTON      "Sa&ve As...",IDC_BTN_SAVE,88,156,65,14
+    PUSHBUTTON      "Op&en...",IDC_BTN_OPEN,157,156,65,14
+    ICON            IDI_ICO_COOLPC,IDC_STATIC,13,12,20,20
+    ICON            IDI_ICO_FOLDER,IDC_STATIC,13,140,20,20
+    GROUPBOX        "Logon settings",IDC_STATIC,3,0,250,128
+    GROUPBOX        "Connection settings",IDC_STATIC,3,131,250,44
+END
+
+IDD_PROPPAGE_DISPLAY DIALOG DISCARDABLE  0, 0, 253, 178
+STYLE DS_CONTROL | WS_CHILD
+
+BEGIN
+    ICON            IDI_ICO_MONITOR,IDC_STC_MONITOR,11,19,20,20
+    LTEXT           "Choose the size of your remote desktop. Drag the slider all the way to the right to go fullscreen.",
+                    IDC_STC_CHOOSESIZE,41,17,203,18
+    CONTROL         "Slider1",IDC_SLD_DESKTOP_SIZE,"msctls_trackbar32",WS_TABSTOP|TBS_AUTOTICKS|TBS_DOWNISLEFT,77,39,99,18
+    LTEXT           "Less",IDC_STC_LESS,53,39,15,8
+    LTEXT           "More",IDC_STC_MORE,183,39,17,8
+    CONTROL         "Fullscreen",IDC_STC_DESKTOP_SIZE,"Static", SS_CENTER, 95,61,74,8
+    GROUPBOX        "Remote Desktop Size",IDC_GRP_DESKTOP_SIZE,3,3,250,70
+
+    COMBOBOX        IDC_CBO_COLOR_DEPTH,21,93,113,59,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         0,IDC_STC_COLORPREVIEW,"Static",SS_BITMAP | SS_CENTERIMAGE,
+                    22,110,111,7
+    LTEXT           "Note: Settings on the remote computer might override this setting.",
+                    IDC_STC_OVERRIDE,22,128,215,12
+    GROUPBOX        "Colors",IDC_GRP_COLORS,3,79,250,79
+    CONTROL         "&Display the connection bar when in full screen mode",
+                    IDC_CHK_DISPLAY_BBAR,"Button",BS_AUTOCHECKBOX | 
+                    BS_VCENTER | WS_TABSTOP,3,167,208,12
+END
+
+IDD_PROPPAGE_LOCALRESOURCES DIALOG DISCARDABLE  0, 0, 253, 178
+STYLE DS_CONTROL | WS_CHILD
+
+BEGIN
+    ICON            IDI_ICO_SOUND,IDC_STATIC,14,15,20,20
+    COMBOBOX        IDC_CBO_SOUND,47,18,164,44,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    ICON            IDI_ICO_KEYBOARD,IDC_STATIC,14,52,20,20
+    LTEXT           "Apply Windows key combinations\n(for example ALT+TAB)",
+                    IDC_STATIC,47,52,172,18
+    COMBOBOX        IDC_CBO_SEND_KEYS,47,73,164,44,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    ICON            IDI_ICO_PORT,IDC_STATIC,14,103,20,20
+    LTEXT           "Connect automatically to these local devices when logged on to the remote computer:",
+                    IDC_STATIC,47,105,200,17
+    CONTROL         "Disk &drives",IDC_CHK_REDIRECT_DRIVES,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,47,122,96,12
+    CONTROL         "Prin&ters",IDC_CHK_REDIRECT_PRINTERS,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,47,134,83,12
+    CONTROL         "Serial po&rts",IDC_CHK_REDIRECT_COM,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,47,146,83,12
+    CONTROL         "S&mart cards",IDC_CHK_REDIRECT_SMARTCARD,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,47,158,83,12
+    PUSHBUTTON      "Printers...",IDC_BTN_SETUP_PRINTER,203,134,46,14
+    LTEXT           "[Clipboard sharing is disabled]",
+                    IDC_STC_NOCLIPRDR, 47, 170, 123, 10
+    GROUPBOX        "Remote computer sound",IDC_STATIC,5,5,248,37
+    GROUPBOX        "Keyboard",IDC_STATIC,5,42,248,50
+    GROUPBOX        "Local devices",IDC_STATIC,5,93,248,89
+END
+
+IDD_PROPPAGE_RUN DIALOG DISCARDABLE  0, 0, 253, 178
+STYLE DS_CONTROL | WS_CHILD
+
+BEGIN
+    CONTROL         "&Start the following program on connection",
+                    IDC_CHK_START_PROGRAM,"Button",BS_AUTOCHECKBOX | 
+                    BS_VCENTER | WS_TABSTOP,13,14,191,12
+    LTEXT           "&Program path and file name:",IDC_STC_STARTPROGRAM,
+                    29,28,204,9
+    EDITTEXT        IDC_EDT_STARTPROGRAM,29,40,208,14,ES_AUTOHSCROLL
+    LTEXT           "S&tart in the following folder:",IDC_STC_WORKDIR,29,
+                    57,204,9
+    EDITTEXT        IDC_EDT_WORKDIR,29,69,208,14,ES_AUTOHSCROLL
+    GROUPBOX        "Start a program",IDC_STATIC,5,4,248,86
+END
+
+IDD_PROPPAGE_PERF DIALOG DISCARDABLE  0, 0, 253, 178
+STYLE DS_CONTROL | WS_CHILD
+
+BEGIN
+    ICON            IDI_ICO_INFO,IDC_STATIC,14,15,20,20
+    LTEXT           "Choose your connection speed to optimize &performance.",
+                    IDC_STC_CHOOSE_SPEED,43,19,201,11
+    COMBOBOX        IDC_CBO_PERF_OPTIMIZE,43,35,158,200,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Allow the following:",IDC_STC_OPTIMIZE_PERF,43,55,
+                    201,10
+    CONTROL         "Desktop &background",IDC_CHK_DESKTOP_BKND,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,43,69,181,12
+    CONTROL         "&Show contents of window while dragging",
+                    IDC_CHK_SHOW_FWD,"Button",BS_AUTOCHECKBOX | BS_VCENTER | 
+                    WS_TABSTOP,43,82,185,12
+    CONTROL         "&Menu and window animation",IDC_CHK_MENU_ANIMATIONS,
+                    "Button",BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,43,95,
+                    175,12
+    CONTROL         "&Themes",IDC_CHK_THEMES,"Button",BS_AUTOCHECKBOX | 
+                    BS_VCENTER | WS_TABSTOP,43,108,169,12
+    CONTROL         "Bitm&ap caching",IDC_CHK_BITMAP_CACHING,"Button",
+                    BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,43,121,169,12
+    GROUPBOX        "Performance",IDC_STATIC,5,4,248,151
+
+    CONTROL         "R&econnect if connection is dropped",IDC_CHK_ENABLE_ARC,
+                    "Button",BS_AUTOCHECKBOX | BS_VCENTER | WS_TABSTOP,5,160,
+                    167,12
+END
+
+
+STRINGTABLE	DISCARDABLE
+BEGIN
+IDS_INVALID_SERVER_NAME				"The server name specified is invalid."
+
+IDS_TAB_GENERAL						"General"
+IDS_TAB_DISPLAY						"Display"
+IDS_TAB_LOCALRESOURCES				"Local Resources"
+IDS_TAB_PROGRAMS					"Programs"
+IDS_TAB_EXPERIENCE					"Experience"
+
+IDS_OPTIONS_MORE					"&Options >>"
+IDS_OPTIONS_LESS					"&Options <<"
+
+IDS_COLOR_8BPP						"256 Colors"
+IDS_COLOR_15BPP						"High Color (15 bit)"
+IDS_COLOR_16BPP						"High Color (16 bit)"
+IDS_COLOR_24BPP						"True Color (24 bit)"
+
+
+IDS_SENDKEYS_FSCREEN					"In full screen mode only"
+IDS_SENDKEYS_REMOTE					"On the remote computer"
+IDS_SENDKEYS_LOCAL					"On the local computer"
+
+IDS_PLAYSOUND_LOCAL					"Bring to this computer"
+IDS_PLAYSOUND_REMOTE				"Leave at remote computer"
+IDS_PLAYSOUND_NOSOUND				"Do not play"
+
+IDS_PERF_28K						"Modem (28.8 Kbps)"
+IDS_PERF_56K						"Modem (56 Kbps)"
+IDS_PERF_BROADBAND					"Broadband (128 Kbps - 1.5 Mbps)"
+IDS_PERF_LAN						"LAN (10 Mbps or higher)"
+IDS_PERF_CUSTOM						"Custom"
+
+IDS_CLOSE							"Close"
+
+IDS_640_480						"640 by 480"
+IDS_800_600						"800 by 600"
+IDS_1024_768						"1024 by 768"
+IDS_1152_864						"1152 by 864"
+IDS_1280_1024						"1280 by 1024"
+IDS_1600_1200						"1600 by 1200"
+IDS_FULLSCREEN						"Full Screen"
+
+IDS_ERR_SAVE						"An error occurred while saving to file %s"
+IDS_ERR_LOAD						"An error occurred while loading from file %s"
+IDS_DEFEXT							"rdp"
+IDS_FILTERSTRING					"Remote Desktop Files (*.RDP)\000*.RDP\000\000\000"
+
+IDS_NOHTMLHELP						"Help cannot be displayed because your system does not have HTML Help installed. Please install HTML Help and try again."
+
+END

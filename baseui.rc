@@ -1,0 +1,148 @@
+//
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+//
+// Use of this source code is subject to the terms of the Microsoft end-user
+// license agreement (EULA) under which you licensed this SOFTWARE PRODUCT.
+// If you did not accept the terms of the EULA, you are not authorized to use
+// this source code. For a copy of the EULA, please see the LICENSE.RTF on your
+// install media.
+//
+#include <windows.h>
+#include "baseui.h"
+#include "resid.h"
+
+#include "tscui.rc"
+
+//ICONS AND BITMAPS
+IDI_MSTSC				ICON	DISCARDABLE 	"mstsc.ico"
+IDI_DISCON				ICON	DISCARDABLE 	"discon.ico"
+IDI_ICO_WARN			ICON	DISCARDABLE		"warning.ico"
+
+IDB_BAND8				BITMAP	DISCARDABLE 	"band8.bmp"
+IDB_WINFLAG8			BITMAP	DISCARDABLE 	"winflag8.bmp"
+
+
+//DIALOGS
+IDD_CONNECTING DIALOG DISCARDABLE  0, 0, 187, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Connecting"
+
+BEGIN
+    LTEXT           "",IDC_STC_CONNECTINGTO,37,8,141,17
+    PUSHBUTTON      "Cancel",IDCANCEL,72,34,50,14
+    CONTROL         IDI_MSTSC, IDC_STATIC,"Static",SS_ICON,7,8,21,20
+END
+
+
+
+IDD_ARCDLG DIALOG DISCARDABLE  0, 0, 175, 96
+STYLE DS_SETFOREGROUND | WS_POPUP | WS_BORDER
+BEGIN
+    CONTROL         IDI_DISCON,IDC_STC_DISCON,"Static",SS_ICON,9,38,64,64
+    PUSHBUTTON      "Cancel",IDCANCEL,130,77,40,12
+    CONTROL         "Reconnecting" ,IDC_STC_TITLETEXT,"Static",SS_LEFT,7,0,104,20
+    CONTROL         IDB_WINFLAG8,IDC_STC_TITLEFLAG,"Static",SS_BITMAP,133,0,32,26
+    CONTROL         "The connection has been lost.\nAttempting to reconnect your session...",
+                    IDC_STC_STATUSDESC, "Static", SS_LEFT, 37,37,136,20
+END
+
+
+IDD_RDRWARNDLG DIALOG DISCARDABLE  0, 0, 264, 133
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Remote Desktop Connection Security Warning"
+BEGIN
+    ICON            IDI_ICO_WARN, IDC_STATIC,7,7,21,20
+    LTEXT           "The following local devices will be made available to the remote computer. This may be potentially unsafe.",
+                    IDC_STATIC,37,9,223,23
+    LTEXT           "test1\ntest2",IDC_STC_DEVICES,37,35,206,21
+    LTEXT           "You should proceed only if you trust the computer you are connecting to.",
+                    IDC_STATIC,37,63,217,23
+    CONTROL         "&Don't prompt me again for connections to this remote computer.",
+                    IDC_CHK_NOPROMPT,"Button",BS_AUTOCHECKBOX | 
+                    BS_VCENTER | BS_MULTILINE | WS_TABSTOP,38,85,222,23
+    DEFPUSHBUTTON   "OK",IDOK,157,115,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,210,115,50,14
+END
+
+
+//STRINGS
+
+STRINGTABLE DISCARDABLE
+BEGIN
+IDS_RDP						"Remote Desktop Connection"
+IDS_CONNECTING_TO			"Connecting to %s..."
+
+IDS_CONFIRMCLOSE_TITLE		"Disconnect Windows Session"
+IDS_CONFIRMCLOSE_MSG		"This will disconnect your Windows session. Your programs will \ncontinue to run while you are disconnected. You can \nreconnect to this session later by logging on again."
+
+IDS_FATALERROR_TITLE		"Fatal Error (Error Code: %d)"
+IDS_FATALERROR_MSG			"The session will be disconnected. Your computer may be low on memory.\nAfter closing some applications, try to reconnect the session."
+
+//IDS_BMPCACHEFAIL_TITLE		"Bitmap Disk Cache Failure"
+//IDS_BMPCACHEFAIL_MSG		"Your disk is full or the cache directory is missing or corrupted.  Some bitmaps may not appear.\n\nIt is recommended that you disconnect and reconnect to disable caching bitmaps to disk."
+
+IDS_PROMPTPORTS				"- Serial Ports\n"
+IDS_PROMPTDRIVES			"- Disk drives"
+
+IDS_USAGE					"Remote Desktop Connection\n\nCETSC  	[<Connection File>] [/v:<server[:port]>] [/console] | /?\n\n<Connection File> -- specifies the name of an .rdp file for the connection.\n\n/v:<server[:port]> -- specifies the terminal server to which you want to connect.\n\n/console -- connects to the console session of a server.\n\n/? -- generates this Usage message"
+
+IDS_TITLE_CONNECTED_DEFAULT         "%s - Remote Desktop"
+IDS_TITLE_CONNECTED                 "%s - %s - Remote Desktop"
+
+END
+
+
+
+
+//DISCONNECT STRINGS
+STRINGTABLE DISCARDABLE
+BEGIN
+    IDS_DISCONNECTED_CAPTION        "Remote Desktop Disconnected"
+    IDS_ERR_CONNECTCALLFAILED       "An error occurred when the client attempted to connect to the remote computer. \nCheck your system memory and then try the connection again."
+    IDS_DISCONNECT_REMOTE_BY_SERVER "The remote computer has ended the connection."
+    IDS_LOW_MEMORY                  "The local computer is low on memory. Close some programs, and then connect to the remote computer again."
+    IDS_SECURITY_ERROR              "Because of a security error, the client could not connect to the remote computer. Verify that you are logged on to the network, and then try connecting again."
+    IDS_BAD_SERVER_NAME             "The specified remote computer could not be found. Verify that you have typed the correct computer name or IP address, and then try connecting again."
+    IDS_CONNECT_FAILED_PROTOCOL     "Because of a protocol error, the client could not connect to the remote computer. \nPlease try connecting to the remote computer again. If the client still fails to connect, contact your network administrator."
+    IDS_CANNOT_LOOPBACK_CONNECT     "The client could not connect. You are already connected to the console of this computer. A new console session cannot be established."
+    IDS_NETWORK_ERROR               "The connection was ended because of a network error. Please try connecting to the remote computer again."
+    IDS_INTERNAL_ERROR              "An internal error has occurred."
+    IDS_NOT_RESPONDING              "This client could not connect to the remote computer.\n\nThe most likely causes for this error are:\n1) A network error occurred while establishing the connection.\n2) The computer might be too busy to accept new connections.\n3) Remote connections might not be enabled at the remote computer."
+    IDS_VERSION_MISMATCH            "Client and server versions do not match. Please upgrade your client software and then try connecting again."
+    IDS_ENCRYPTION_ERROR            "Because of an error in data encryption, this session will end. Please try connecting to the remote computer again."
+    IDS_PROTOCOL_ERROR              "Because of a protocol error, this session will be disconnected. Please try connecting to the remote computer again."
+    IDS_ILLEGAL_SERVER_NAME         "The specified computer name contains invalid characters. Please verify the name and try again."
+    IDS_CONNECTION_TIMEOUT          "The remote connection has timed out. Please try connecting to the remote computer again."
+    IDS_DISCONNECT_IDLE_TIMEOUT     "The remote session was ended because the idle timeout limit was reached. This limit is set by the server administrator or by network policies."
+    IDS_DISCONNECT_LOGON_TIMEOUT    "The remote session ended because the total logon time limit was reached. This limit is set by the server administrator or by network policies."
+    IDS_PROTOCOL_ERROR_WITH_CODE    "Because of a protocol error (code: 0x%x), the remote session will be disconnected.\nPlease try connecting to the remote computer again."
+    IDS_LICENSING_TIMEDOUT          "A licensing error occurred while the client was attempting to connect (Licensing timed out).\nPlease try connecting to the remote computer again."
+    IDS_LICENSING_NEGOT_FAILED      "The remote computer disconnected the session because of an error in the licensing protocol.\nPlease try connecting to the remote computer again or contact your server administrator."
+    IDS_DISCONNECT_REMOTE_BY_SERVER_TOOL "Your connection to the remote computer was broken by an administration tool on the remote computer. Another user may have logged in to the remote computer."
+    IDS_LOGOFF_REMOTE_BY_SERVER      "The remote session was disconnected because your session was logged off at the remote computer.\nYour administrator or another user might have ended your connection."
+    IDS_DISCONNECT_BYOTHERCONNECTION "This connection to the remote computer was broken because you logged in to the computer locally."
+    IDS_CONNECTION_BROKEN            "Your connection to the remote computer was broken, most likely due to a network error.\nPlease try connecting to the remote computer again."
+    IDS_SERVER_OUT_OF_MEMORY         "The connection was disconnected because the remote computer is low on memory."
+    IDS_LICENSE_INTERNAL             "The remote session was disconnected because there was an internal error in the remote computer's licensing protocol."
+    IDS_LICENSE_NO_LICENSE_SERVER    "The remote session was disconnected because there are no Terminal Server License Servers available to provide a license.\nPlease contact the server administrator."
+    IDS_LICENSE_NO_LICENSE           "The remote session was disconnected because there are no Terminal Server client access licenses available for this computer.\nPlease contact the server administrator."
+    IDS_LICENSE_BAD_CLIENT_MSG       "The remote session was disconnected because the remote computer received an invalid licensing message from this computer."
+    IDS_LICENSE_HWID_DOESNT_MATCH_LICENSE "The remote session was disconnected because the Terminal Server client access license stored on this computer has been modified."
+    IDS_LICENSE_BAD_CLIENT_LICENSE   "The remote session was disconnected because the Terminal Server client access license stored on this computer is in an invalid format."
+    IDS_LICENSE_CANT_FINISH_PROTOCOL "The remote session was disconnected because there were network problems during the licensing protocol.\nPlease try connecting to the remote computer again."
+    IDS_LICENSE_CLIENT_ENDED_PROTOCOL "The remote session was disconnected because the client prematurely ended the licensing protocol."
+    IDS_LICENSE_BAD_CLIENT_ENCRYPTION "The remote session was disconnected because a licensing message was incorrectly encrypted."
+    IDS_LICENSE_CANT_UPGRADE_LICENSE "The remote session was disconnected because the local computer's client access license could not be upgraded or renewed.\nPlease contact the server administrator."
+    IDS_LICENSE_NO_REMOTE_CONNECTIONS "The remote session was disconnected because the remote computer is not licensed to accept remote connections.\nPlease contact the server administrator."
+    IDS_SERVER_DENIED_CONNECTION      "This client could not connect to the remote computer.\n\nThe most likely causes for this error are:\n1) A network error occurred while establishing the connection.\n2) The maximum number of connections was exceeded at the remote computer.\n3) Remote connections might not be enabled at the remote computer."
+END
+
+
+IDR_ACCELERATORS ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_TAB,         IDC_NEXTTAB,            VIRTKEY, CONTROL, NOINVERT
+    VK_TAB,         IDC_PREVTAB,            VIRTKEY, SHIFT, CONTROL, NOINVERT
+    VK_PRIOR,       IDC_PREVTAB,            VIRTKEY, CONTROL, NOINVERT
+    VK_NEXT,        IDC_NEXTTAB,            VIRTKEY, CONTROL, NOINVERT
+END
