@@ -29,6 +29,9 @@
 		<Platform
 			Name="Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
 		/>
+		<Platform
+			Name="ITC_CE700 (ARMv4I)"
+		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
@@ -2260,6 +2263,333 @@
 			<DebuggerTool
 			/>
 		</Configuration>
+		<Configuration
+			Name="Debug|ITC_CE700 (ARMv4I)"
+			OutputDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			IntermediateDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/ceTSC.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="0"
+				AdditionalIncludeDirectories="D:\WINCE\WINCE500\PUBLIC\RDP\SDK\INC"
+				PreprocessorDefinitions="DEBUG;ARM;_ARM_;ARMV4I;UNDER_CE=$(CEVER);_WIN32_WCE=$(CEVER);$(CePlatform);UNICODE"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pch"
+				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
+				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
+				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
+				BrowseInformation="1"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalOptions="/r "
+				PreprocessorDefinitions="UNDER_CE=$(CEVER),_WIN32_WCE=$(CEVER),UNICODE,_UNICODE,DEBUG,$(CePlatform),THUMB,_THUMB_,ARM,_ARM_,ARMV4I"
+				Culture="1033"
+				ShowProgress="true"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/subsystem:$(CESubsystem) /MACHINE:THUMB "
+				AdditionalDependencies="commctrl.lib coredll.lib ceosutil.lib"
+				ShowProgress="1"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.exe"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pdb"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				BaseAddress="0x00010000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				SuppressStartupBanner="true"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.bsc"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|ITC_CE700 (ARMv4I)"
+			OutputDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			IntermediateDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/ceTSC.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="D:\WINCE\WINCE500\PUBLIC\RDP\SDK\INC"
+				PreprocessorDefinitions="_WIN32_WCE=$(CEVER);ARM;_ARM_;$(CePlatform);ARMV4I;UNDER_CE=$(CEVER);UNICODE;NDEBUG"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pch"
+				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
+				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
+				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalOptions="/r "
+				PreprocessorDefinitions="UNDER_CE=$(CEVER),_WIN32_WCE=$(CEVER),UNICODE,_UNICODE,NDEBUG,$(CePlatform),THUMB,_THUMB_,ARM,_ARM_,ARMV4I"
+				Culture="1033"
+				ShowProgress="true"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/subsystem:$(CESubsystem) /MACHINE:THUMB "
+				AdditionalDependencies="commctrl.lib coredll.lib ceosutil.lib"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.exe"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pdb"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				BaseAddress="0x00010000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				SuppressStartupBanner="true"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.bsc"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
+		<Configuration
+			Name="myrelease|ITC_CE700 (ARMv4I)"
+			OutputDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			IntermediateDirectory="ITC_CE700 (ARMv4I)\$(ConfigurationName)"
+			ConfigurationType="1"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC60.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+				TypeLibraryName="$(PlatformName)\$(ConfigurationName)/ceTSC.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				ExecutionBucket="7"
+				Optimization="3"
+				AdditionalIncludeDirectories="D:\WINCE\WINCE500\PUBLIC\RDP\SDK\INC"
+				PreprocessorDefinitions="ARM;_ARM_;ARMV4I;UNDER_CE=$(CEVER);_WIN32_WCE=$(CEVER);$(CePlatform);UNICODE"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pch"
+				AssemblerListingLocation="$(PlatformName)\$(ConfigurationName)/"
+				ObjectFile="$(PlatformName)\$(ConfigurationName)/"
+				ProgramDataBaseFileName="$(PlatformName)\$(ConfigurationName)/"
+				BrowseInformation="0"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalOptions="/r "
+				PreprocessorDefinitions="UNDER_CE=$(CEVER),_WIN32_WCE=$(CEVER),UNICODE,_UNICODE,DEBUG,$(CePlatform),THUMB,_THUMB_,ARM,_ARM_,ARMV4I"
+				Culture="1033"
+				ShowProgress="true"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/subsystem:$(CESubsystem) /MACHINE:THUMB "
+				AdditionalDependencies="commctrl.lib coredll.lib ceosutil.lib"
+				ShowProgress="1"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.exe"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				IgnoreDefaultLibraryNames="$(CENoDefaultLib)"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)/ceTSC.pdb"
+				StackReserveSize="65536"
+				StackCommitSize="4096"
+				EntryPointSymbol="WinMainCRTStartup"
+				BaseAddress="0x00010000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				SuppressStartupBanner="true"
+				OutputFile="$(PlatformName)\$(ConfigurationName)/ceTSC.bsc"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCCodeSignTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+			<DeploymentTool
+				ForceDirty="-1"
+				RemoteDirectory=""
+				RegisterOutput="0"
+				AdditionalFiles=""
+			/>
+			<DebuggerTool
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -2453,6 +2783,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="cetsckeepalive.cpp"
@@ -2632,6 +2988,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2825,6 +3207,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="dlgbase.cpp"
@@ -3004,6 +3412,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -3197,6 +3631,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="maindlg.cpp"
@@ -3376,6 +3836,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -3569,6 +4055,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="preconnectionlogic.cpp"
@@ -3748,6 +4260,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -3941,6 +4479,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="propgeneral.cpp"
@@ -4120,6 +4684,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -4313,6 +4903,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="propperf.cpp"
@@ -4492,6 +5108,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -4685,6 +5327,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="rdrwarndlg.cpp"
@@ -4864,6 +5532,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -5057,6 +5751,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="taskbarlist.cpp"
@@ -5236,6 +5956,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -5433,6 +6179,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="uiutils.cpp"
@@ -5619,6 +6391,32 @@
 						BrowseInformation="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="utils.cpp"
@@ -5798,6 +6596,32 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						BrowseInformation="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="myrelease|ITC_CE700 (ARMv4I)"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -6118,6 +6942,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="myrelease|Windows Mobile 5.0 Smartphone SDK (ARMV4I)"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCResourceCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|ITC_CE700 (ARMv4I)"
 					ExcludedFromBuild="true"
 					>
 					<Tool
